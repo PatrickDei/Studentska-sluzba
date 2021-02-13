@@ -8,6 +8,10 @@ import { StudentsComponent } from './students/students.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {RouterModule} from '@angular/router';
+import {AuthService} from './auth.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    AuthService
   ],
   providers: [],
   bootstrap: [AppComponent]

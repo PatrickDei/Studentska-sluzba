@@ -7,9 +7,14 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['../employees']">Djelatnici</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!isLoggedIn()">
         <a class="nav-link" [routerLink]="['../login']">Login</a>
       </li>
+      <li class="nav-item" *ngIf="isLoggedIn()">
+        <a class="nav-link" (click)="logout()">Logout</a>
+      </li>
     </ul>
+    <br>
+    <div *ngIf="isAnAdmin()">Administrator ste</div>
   </div>
 </nav>

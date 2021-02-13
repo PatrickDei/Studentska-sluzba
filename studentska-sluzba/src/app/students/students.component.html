@@ -9,10 +9,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let s of students">
-      <td>{{s.name}}</td>
+      <td><a [routerLink]="">{{s.name}}</a></td>
       <td>{{s.surname}}</td>
       <td>{{s.course}}</td>
       <td>{{s.yearsEnrolled}}</td>
+
     </tr>
   </tbody>
 </table>
