@@ -20,13 +20,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73ae191d-7f1a-4f35-acae-691b9973da15" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/student.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/curriculum-change/curriculum-change.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/curriculum-change/curriculum-change.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/curriculum-change/curriculum-change.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/classes.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.model.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/routes/curriculum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/routes/news.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/course.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Studentska sluzba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Studentska sluzba.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/employees/employee.model.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/employees/employees.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/curriculum-change/curriculum-change.component.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/employees/employees.component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/employees/employees.component.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.component.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/employees/employees.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/login/login.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/login/login.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/main-menu/main-menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/main-menu/main-menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/register/register.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/register/register.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/register/register.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/register/register.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/routes/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/public/app/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/public/app/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +62,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -44,20 +70,29 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1oFBbZ2IdpXuPIzFM25ki97YBAY" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Tehničko Veleučilište Zagreb/5. Semestar/Napredno Javascript Programiranje/sedmi_labos" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/studentska-sluzba/src/public/app" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="D:\Git repositories\Studentska sluzba\studentska-sluzba\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Git repositories\Studentska sluzba\studentska-sluzba\src\public\app" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -71,7 +106,7 @@
       <workItem from="1612954610999" duration="595000" />
       <workItem from="1612976851922" duration="28000" />
       <workItem from="1613052645567" duration="706000" />
-      <workItem from="1613118553909" duration="4078000" />
+      <workItem from="1613118553909" duration="29290000" />
     </task>
     <servers />
   </component>
@@ -94,9 +129,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="531" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1613052749736" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1613208481188">
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1613240143034">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613208481188" />
+    <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1613240143034" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1613213719317">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613213719317" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1613251677885">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1613251677885" />
   </component>
 </project>

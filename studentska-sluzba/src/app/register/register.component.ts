@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
 
   addUser() {
     if (this.registerForm.get('password').value == this.registerForm.get('confirmPass').value) {
-      let newUser = {
+      const newUser = {
         username: this.registerForm.get('username').value,
         password: this.registerForm.get('password').value,
         email: this.registerForm.get('email').value,
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
         admin: this.isAdmin.checked
       };
       this.http.post('/api/users', {u: newUser}).subscribe(res => {
-        console.log('Adding user');
+        console.log(res);
       });
     }
   }

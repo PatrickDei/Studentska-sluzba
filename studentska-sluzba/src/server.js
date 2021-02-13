@@ -36,6 +36,8 @@ let initServer = async (db) => {
   app.use(morgan('dev'));
 
   const apiRouter = require('./app/routes/api')(express, config.pool, db);
+  const curriculumRouter = require('./app/routes/curriculum')(express, config.pool, db);
+  const newsRouter = require('./app/routes/news')(express, config.pool, db);
 
   apiRouter.use((req, res, next) => {
     console.log('Zahtjev na: ' + req.url);
@@ -43,6 +45,8 @@ let initServer = async (db) => {
   });
 
   app.use('/api', apiRouter);
+  app.use('/curriculum', curriculumRouter);
+  app.use('/news', newsRouter);
 
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/app/index.html'));

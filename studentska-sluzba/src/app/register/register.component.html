@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm">
+<form [formGroup]="registerForm" id="registracija">
   <div class="form-group">
     Korisničko ime
     <input formControlName="username" class="form-control" placeholder="Unesite korisničko ime">
@@ -25,6 +25,4 @@
   </div>
 
   <button (click)="addUser()" class="btn btn-primary">Registriraj</button>
-  <br>
-  <button [routerLink]="['../login']" class="btn btn-primary">Natrag na login</button>
 </form>

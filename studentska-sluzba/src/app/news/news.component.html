@@ -1,0 +1,32 @@
+<button class="btn btn-primary" id="addNews">Dodaj novost</button>
+<form [formGroup]="newsForm" *ngIf="adding">
+  <div class="form-group">
+    <label>Predmet</label>
+    <select class="form-control" formControlName="class">
+      <option *ngFor="let c of classes">{{c.name}}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    Naslov
+    <input formControlName="title" class="form-control" placeholder="Naslov">
+  </div>
+  <div class="form-group">
+    Tekst
+    <input formControlName="text" class="form-control" placeholder="Tekst">
+  </div>
+  <div class="form-group">
+    Datum isteka
+    <input type="date" formControlName="dateOfExpire" class="form-control">
+  </div>
+  <button (click)="postNews()" class="btn btn-primary">Objavi</button>
+</form>
+
+<div class="card" *ngFor="let n of news; let i = index">
+  <div class="card-body">
+    <h5 class="card-title">{{n.title}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{n.datePublished | date: 'short'}}</h6>
+    <p class="card-text">{{n.text}}</p>
+    <br>
+    <button *ngIf="isAdmin" type="button" class="btn btn-danger" (click)="deleteNews(i)">Obriši</button>
+  </div>
+</div>

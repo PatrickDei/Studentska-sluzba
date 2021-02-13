@@ -8,18 +8,18 @@ module.exports = function (express, pool, db) {
     console.log('Welcome to the api!');
   });
 
-  // /api/posts ruta
-  router.route('/posts').get(async function (req, res) {
+  // /api/students ruta
+  router.route('/students').get(async function (req, res) {
     try{
-      let rows = await db.collection('posts').find({}).toArray();
-      res.json({status: 'OK', posts: rows});
+      let rows = await db.collection('students').find({}).toArray();
+      res.json({status: 'OK', students: rows});
     }catch(e) {
       console.log(e);
       return res.json({code: 100, status: 'Error with query'});
     }
   }).post(async function (req, res) {
     try{
-      let data = await db.collection('posts').insertOne(req.body.p);
+      let data = await db.collection('students').insertOne(req.body.s);
       res.json({status: 'OK', insertId: data.insertedId});
     }catch(e) {
       console.log(e);
@@ -27,10 +27,10 @@ module.exports = function (express, pool, db) {
     }
   }).put(async function (req, res) {
     try{
-      let data = await db.collection('posts').updateOne({
-        _id: ObjectId(req.body.p.id)
+      let data = await db.collection('students').updateOne({
+        _id: ObjectId(req.body.s.id)
       }, {
-        $set : req.body.p
+        $set : req.body.s
       });
       res.json({status: 'OK', changes: data.nModified});
     }catch(e) {
@@ -39,11 +39,10 @@ module.exports = function (express, pool, db) {
     }
   });
 
-
-  router.route('posts/:id').delete(async function (req, res) {
+  router.route('students/:id').delete(async function (req, res) {
     try{
-      let data = await db.collection('posts').removeOne({
-        _id: ObjectId(req.params.id)
+      let data = await db.collection('students').removeOne({
+        _id: req.params.id
       });
       res.json({status: 'OK', changes: data});
     }catch(e) {
@@ -51,8 +50,6 @@ module.exports = function (express, pool, db) {
       res.json({code: 100, status: 'Error with query'});
     }
   });
-
-
 
 
 

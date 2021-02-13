@@ -1,0 +1,26 @@
+<button class="btn btn-primary" (click)="addingClass()">Dodaj kolegij</button>
+<button class="btn btn-primary" (click)="addingCourse()">Dodaj smjer</button>
+
+<form [formGroup]="classForm" *ngIf="changingClasses">
+  <div class="form-group">
+    Naziv
+    <input formControlName="name" class="form-control" placeholder="Naziv kolegija">
+  </div>
+  <div class="form-group">
+    <label>Smjer</label>
+    <select class="form-control" formControlName="course">
+      <option *ngFor="let c of courses">{{c.name}}</option>
+    </select>
+  </div>
+  <button (click)="addClass()" class="btn btn-primary">Dodaj</button>
+</form>
+
+
+
+<form [formGroup]="courseForm" *ngIf="changingCourses">
+  <div class="form-group">
+    Naziv
+    <input formControlName="name" class="form-control" placeholder="Naziv smjera">
+  </div>
+  <button (click)="addCourse()" class="btn btn-primary">Dodaj</button>
+</form>

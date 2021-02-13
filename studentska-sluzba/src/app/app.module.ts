@@ -5,22 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { StudentsComponent } from './students/students.component';
-import { EmployeesComponent } from './employees/employees.component';
+import { NewsComponent } from './news/news.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {AuthService} from './auth.service';
+import { CurriculumChangeComponent } from './curriculum-change/curriculum-change.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainMenuComponent,
     StudentsComponent,
-    EmployeesComponent,
+    NewsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CurriculumChangeComponent
   ],
   imports: [
     BrowserModule,
