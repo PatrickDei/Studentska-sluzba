@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Ime</th>
+    <th scope="col">Prezime</th>
+    <th scope="col">Studij</th>
+    <th scope="col">Godina</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let s of students">
+      <td>{{s.name}}</td>
+      <td>{{s.surname}}</td>
+      <td>{{s.course}}</td>
+      <td>{{s.yearsEnrolled}}</td>
+    </tr>
+  </tbody>
+</table>
