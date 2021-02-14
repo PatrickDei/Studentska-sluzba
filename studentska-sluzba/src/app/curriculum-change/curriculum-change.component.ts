@@ -23,14 +23,6 @@ export class CurriculumChangeComponent implements OnInit {
   courses: Course[];
 
   ngOnInit(): void {
-    this.http.get('/curriculum/courses').subscribe( (res: {status: string, courses: Course[]}) => {
-      this.courses = res.courses;
-      console.log(res);
-    });
-
-    this.changingClasses = false;
-    this.changingClasses = false;
-
     this.classForm = new FormGroup({
       name: new FormControl(null, Validators.required),
       course: new FormControl(null, Validators.required)
@@ -39,6 +31,15 @@ export class CurriculumChangeComponent implements OnInit {
     this.courseForm = new FormGroup({
       name: new FormControl(null, Validators.required)
     });
+
+    this.http.get('/curriculum/courses').subscribe( (res: {status: string, courses: Course[]}) => {
+      this.courses = res.courses;
+      console.log(res);
+      this.classForm.get('course').setValue(this.courses[0].name);
+    });
+
+    this.changingClasses = false;
+    this.changingClasses = false;
   }
 
   addingCourse(){
@@ -75,6 +76,7 @@ export class CurriculumChangeComponent implements OnInit {
     };
     this.http.post('/curriculum/classes', {c: cl}).subscribe( res => {
       console.log(res);
+      this.classes.push(cl);
     });
   }
 

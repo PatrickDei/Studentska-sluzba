@@ -16,15 +16,15 @@
   </div>
   <div class="form-group">
     Datum isteka
-    <input type="date" formControlName="dateOfExpire" class="form-control">
+    <input type="datetime-local" formControlName="dateOfExpire" class="form-control">
   </div>
   <button (click)="postNews()" class="btn btn-primary">Objavi</button>
 </form>
 
 <div class="card" *ngFor="let n of news; let i = index">
   <div class="card-body">
-    <h5 class="card-title">{{n.title}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">{{n.datePublished | date: 'short'}}</h6>
+    <h5 class="card-title">{{n.title}} - {{n.class.name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{n.datePublished | date: 'short'}} - {{n.dateOfExpiration | date: 'short'}}</h6>
     <p class="card-text">{{n.text}}</p>
     <br>
     <button *ngIf="isAdmin" type="button" class="btn btn-danger" (click)="deleteNews(i)">Obriši</button>

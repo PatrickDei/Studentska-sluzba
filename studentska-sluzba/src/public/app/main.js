@@ -173,10 +173,10 @@ function NewsComponent_form_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.classes);
 } }
-function NewsComponent_div_3_button_10_Template(rf, ctx) { if (rf & 1) {
+function NewsComponent_div_3_button_11_Template(rf, ctx) { if (rf & 1) {
     const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 17);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NewsComponent_div_3_button_10_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11); const i_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index; const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.deleteNews(i_r7); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function NewsComponent_div_3_button_11_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11); const i_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index; const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.deleteNews(i_r7); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Obri\u0161i");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
@@ -189,22 +189,23 @@ function NewsComponent_div_3_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "h6", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](6, "date");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "date");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "p", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, NewsComponent_div_3_button_10_Template, 2, 0, "button", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](10, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, NewsComponent_div_3_button_11_Template, 2, 0, "button", 16);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
     const n_r6 = ctx.$implicit;
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](n_r6.title);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", n_r6.title, " - ", n_r6.class.name, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](6, 4, n_r6.datePublished, "short"));
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](6, 6, n_r6.datePublished, "short"), " - ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](7, 9, n_r6.dateOfExpiration, "short"), "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](n_r6.text);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.isAdmin);
@@ -215,23 +216,30 @@ class NewsComponent {
         this.auth = auth;
     }
     ngOnInit() {
-        this.http.get('/news').subscribe((res) => {
-            this.news = res.news;
-            //this.news.filter( e => e.dateOfExpiration > new Date());
-        });
-        this.http.get('/curriculum/classes').subscribe((res) => {
-            this.classes = res.classes;
-        });
-        this.isAdmin = this.auth.getUser().admin;
-        this.adding = false;
-        document.getElementById('addNews').addEventListener('click', () => {
-            this.adding = !this.adding;
-        });
         this.newsForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             title: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             text: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             dateOfExpire: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             class: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required)
+        });
+        this.http.get('/news').subscribe((res) => {
+            this.news = res.news;
+            let now = new Date();
+            this.news = this.news.filter(e => {
+                console.log(e.dateOfExpiration);
+                console.log(now);
+                console.log('Passed check: ' + (e.dateOfExpiration >= now));
+                return e.dateOfExpiration >= now;
+            });
+        });
+        this.http.get('/curriculum/classes').subscribe((res) => {
+            this.classes = res.classes;
+            this.newsForm.get('class').setValue(this.classes[0].name);
+        });
+        this.isAdmin = this.auth.getUser().admin;
+        this.adding = false;
+        document.getElementById('addNews').addEventListener('click', () => {
+            this.adding = !this.adding;
         });
     }
     postNews() {
@@ -244,26 +252,26 @@ class NewsComponent {
         };
         this.http.post('/news', { n: news }).subscribe((res) => {
             console.log(res);
-            let attribute = 'id'; //to avoid warnings
+            let attribute = '_id'; //to avoid warnings
             news[attribute] = res.insertId;
             this.news.push(news);
         });
     }
     deleteNews(i) {
         const obj = this.news[i];
-        console.log(obj);
-        this.http.delete(`/news/${obj.id}`).subscribe(res => {
+        this.http.delete(`/news/${obj._id}`).subscribe(res => {
             console.log(res);
+            this.news.splice(i, 1);
         });
     }
 }
 NewsComponent.ɵfac = function NewsComponent_Factory(t) { return new (t || NewsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"])); };
-NewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NewsComponent, selectors: [["app-employees"]], decls: 4, vars: 2, consts: [["id", "addNews", 1, "btn", "btn-primary"], [3, "formGroup", 4, "ngIf"], ["class", "card", 4, "ngFor", "ngForOf"], [3, "formGroup"], [1, "form-group"], ["formControlName", "class", 1, "form-control"], [4, "ngFor", "ngForOf"], ["formControlName", "title", "placeholder", "Naslov", 1, "form-control"], ["formControlName", "text", "placeholder", "Tekst", 1, "form-control"], ["type", "date", "formControlName", "dateOfExpire", 1, "form-control"], [1, "btn", "btn-primary", 3, "click"], [1, "card"], [1, "card-body"], [1, "card-title"], [1, "card-subtitle", "mb-2", "text-muted"], [1, "card-text"], ["type", "button", "class", "btn btn-danger", 3, "click", 4, "ngIf"], ["type", "button", 1, "btn", "btn-danger", 3, "click"]], template: function NewsComponent_Template(rf, ctx) { if (rf & 1) {
+NewsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: NewsComponent, selectors: [["app-employees"]], decls: 4, vars: 2, consts: [["id", "addNews", 1, "btn", "btn-primary"], [3, "formGroup", 4, "ngIf"], ["class", "card", 4, "ngFor", "ngForOf"], [3, "formGroup"], [1, "form-group"], ["formControlName", "class", 1, "form-control"], [4, "ngFor", "ngForOf"], ["formControlName", "title", "placeholder", "Naslov", 1, "form-control"], ["formControlName", "text", "placeholder", "Tekst", 1, "form-control"], ["type", "datetime-local", "formControlName", "dateOfExpire", 1, "form-control"], [1, "btn", "btn-primary", 3, "click"], [1, "card"], [1, "card-body"], [1, "card-title"], [1, "card-subtitle", "mb-2", "text-muted"], [1, "card-text"], ["type", "button", "class", "btn btn-danger", 3, "click", 4, "ngIf"], ["type", "button", 1, "btn", "btn-danger", 3, "click"]], template: function NewsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Dodaj novost");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](2, NewsComponent_form_2_Template, 17, 2, "form", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, NewsComponent_div_3_Template, 11, 7, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](3, NewsComponent_div_3_Template, 12, 12, "div", 2);
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.adding);
@@ -313,25 +321,26 @@ function MainMenuComponent_li_9_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](1, _c0));
 } }
 function MainMenuComponent_li_10_Template(rf, ctx) { if (rf & 1) {
-    const _r5 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    const _r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "li", 5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 9);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MainMenuComponent_li_10_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r5); const ctx_r4 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r4.logout(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "a", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function MainMenuComponent_li_10_Template_a_click_1_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r4); const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r3.logout(); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Logout");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
-function MainMenuComponent_div_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 10);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, " Administrator ste ");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} }
 const _c1 = function () { return ["../curriculum-change"]; };
-function MainMenuComponent_button_15_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 11);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Promjena nastavnog plana");
+function MainMenuComponent_div_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 9);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Administrator ste");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "button", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Promjena nastavnog plana");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](1, _c1));
 } }
 const _c2 = function () { return [""]; };
@@ -354,7 +363,7 @@ class MainMenuComponent {
     }
 }
 MainMenuComponent.ɵfac = function MainMenuComponent_Factory(t) { return new (t || MainMenuComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_service__WEBPACK_IMPORTED_MODULE_1__["AuthService"])); };
-MainMenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MainMenuComponent, selectors: [["app-main-menu"]], decls: 16, vars: 10, consts: [[1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], ["id", "navbarNav", 1, "collapse", "navbar-collapse"], [1, "navbar-nav"], [1, "nav-item", "active"], [1, "nav-link", 3, "routerLink"], [1, "nav-item"], ["class", "nav-item", 4, "ngIf"], ["class", "navbar-text", 4, "ngIf"], ["class", "btn btn-primary", 3, "routerLink", 4, "ngIf"], [1, "nav-link", 3, "click"], [1, "navbar-text"], [1, "btn", "btn-primary", 3, "routerLink"]], template: function MainMenuComponent_Template(rf, ctx) { if (rf & 1) {
+MainMenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: MainMenuComponent, selectors: [["app-main-menu"]], decls: 15, vars: 9, consts: [[1, "navbar", "navbar-expand-lg", "navbar-light", "bg-light"], ["id", "navbarNav", 1, "collapse", "navbar-collapse"], [1, "navbar-nav"], [1, "nav-item", "active"], [1, "nav-link", 3, "routerLink"], [1, "nav-item"], ["class", "nav-item", 4, "ngIf"], ["class", "collapse navbar-collapse", 4, "ngIf"], [1, "nav-link", 3, "click"], [1, "collapse", "navbar-collapse"], [1, "navbar-text"], [1, "btn", "btn-primary", 3, "routerLink"]], template: function MainMenuComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "nav", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "ul", 2);
@@ -376,24 +385,21 @@ MainMenuComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, MainMenuComponent_div_14_Template, 2, 0, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](15, MainMenuComponent_button_15_Template, 2, 2, "button", 8);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, MainMenuComponent_div_14_Template, 5, 2, "div", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](7, _c2));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](6, _c2));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](8, _c3));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](7, _c3));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !ctx.isLoggedIn());
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isLoggedIn());
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](9, _c4));
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("routerLink", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpureFunction0"](8, _c4));
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isAnAdmin());
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.isAnAdmin());
     } }, directives: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLinkWithHref"], _angular_common__WEBPACK_IMPORTED_MODULE_3__["NgIf"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLink"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJtYWluLW1lbnUuY29tcG9uZW50LmNzcyJ9 */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MainMenuComponent, [{
@@ -522,29 +528,32 @@ class StudentsComponent {
         this.auth = auth;
     }
     ngOnInit() {
-        this.http.get('api/students').subscribe((res) => {
-            this.students = res.students;
-            this.students.forEach((s) => {
-                const curYear = new Date();
-                s.yearsEnrolled = curYear.getFullYear() - s.dateOfEnrollment.getFullYear();
-            });
-        });
-        this.http.get('/curriculum/courses').subscribe((res) => {
-            this.courses = res.courses;
-        });
-        this.adding = false;
-        document.getElementById('addStudent').addEventListener('click', () => {
-            this.adding = !this.adding;
-        });
         this.studentForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             surname: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             dateOfBirth: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             course: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required)
         });
+        this.http.get('api/students').subscribe((res) => {
+            this.students = res.students;
+            this.students.forEach((s) => {
+                const curYear = new Date();
+                const enrolledYear = new Date(s.dateOfEnrollment);
+                s.yearsEnrolled = curYear.getFullYear() - enrolledYear.getFullYear() + 1;
+            });
+        });
+        this.http.get('/curriculum/courses').subscribe((res) => {
+            this.courses = res.courses;
+            this.studentForm.get('course').setValue(this.courses[0].name);
+        });
+        this.adding = false;
+        document.getElementById('addStudent').addEventListener('click', () => {
+            this.adding = !this.adding;
+        });
         this.isAdmin = this.auth.getUser().admin;
     }
     addStudent() {
+        console.log(this.studentForm.get('dateOfBirth').value);
         let student = {
             name: this.studentForm.get('name').value,
             surname: this.studentForm.get('surname').value,
@@ -554,14 +563,19 @@ class StudentsComponent {
         };
         this.http.post('api/students', { s: student }).subscribe((res) => {
             console.log(res);
-            let attribute = 'id'; //avoid waarnings
+            let attribute = '_id'; //avoid waarnings
             student[attribute] = res.insertId;
+            attribute = 'yearsEnrolled';
+            student[attribute] = 1;
             this.students.push(student);
         });
     }
     deleteStudent(i) {
-        this.http.delete(`/api/students/${this.students[i].id}`).subscribe(res => {
+        let obj = this.students[i];
+        console.log(obj);
+        this.http.delete(`/api/students/${obj._id}`).subscribe(res => {
             console.log(res);
+            this.students.splice(i, 1);
         });
     }
 }
@@ -715,12 +729,6 @@ class CurriculumChangeComponent {
         this.http = http;
     }
     ngOnInit() {
-        this.http.get('/curriculum/courses').subscribe((res) => {
-            this.courses = res.courses;
-            console.log(res);
-        });
-        this.changingClasses = false;
-        this.changingClasses = false;
         this.classForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             course: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required)
@@ -728,6 +736,13 @@ class CurriculumChangeComponent {
         this.courseForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required)
         });
+        this.http.get('/curriculum/courses').subscribe((res) => {
+            this.courses = res.courses;
+            console.log(res);
+            this.classForm.get('course').setValue(this.courses[0].name);
+        });
+        this.changingClasses = false;
+        this.changingClasses = false;
     }
     addingCourse() {
         this.changingCourses = !this.changingCourses;
@@ -757,6 +772,7 @@ class CurriculumChangeComponent {
         };
         this.http.post('/curriculum/classes', { c: cl }).subscribe(res => {
             console.log(res);
+            this.classes.push(cl);
         });
     }
     editClass() {

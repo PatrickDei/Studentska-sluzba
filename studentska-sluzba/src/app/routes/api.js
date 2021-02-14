@@ -39,10 +39,10 @@ module.exports = function (express, pool, db) {
     }
   });
 
-  router.route('students/:id').delete(async function (req, res) {
+  router.route('/students/:id').delete(async function (req, res) {
     try{
       let data = await db.collection('students').removeOne({
-        _id: req.params.id
+        _id: ObjectId(req.params.id)
       });
       res.json({status: 'OK', changes: data});
     }catch(e) {

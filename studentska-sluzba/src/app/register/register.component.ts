@@ -22,6 +22,7 @@ export class RegisterComponent implements OnInit {
       username: new FormControl(null, Validators.minLength(4)),
       confirmPass: new FormControl(null, Validators.required)
     });
+
     this.isAdmin = document.getElementById('isAdmin');
   }
 

@@ -1,7 +1,10 @@
+import {Class} from './classes.model';
+
 export class News{
-  id?: string;
+  _id?: string;
   title: string;
   text: string;
   datePublished: Date;
   dateOfExpiration: Date;
+  class: Class;
 }

@@ -38,7 +38,7 @@ module.exports = function (express, pool, db) {
   router.route('/:id').delete(async function (req, res) {
     try {
       let data = await db.collection('news').removeOne({
-        _id: req.params.id
+        _id: ObjectId(req.params.id)
       });
       res.json({status: 'OK', changes: data});
     } catch (e) {

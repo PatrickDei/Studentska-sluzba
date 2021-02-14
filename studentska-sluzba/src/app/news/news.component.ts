@@ -19,15 +19,31 @@ export class NewsComponent implements OnInit {
   newsForm: FormGroup;
   isAdmin: boolean;
   classes: Class[];
+  opt;
 
   ngOnInit(): void {
+    this.newsForm = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      text: new FormControl(null, Validators.required),
+      dateOfExpire: new FormControl(null, Validators.required),
+      class: new FormControl(null, Validators.required)
+    });
+
     this.http.get('/news').subscribe((res: {status: string, news: News[]}) => {
       this.news = res.news;
-      //this.news.filter( e => e.dateOfExpiration > new Date());
+
+      let now = new Date();
+      this.news = this.news.filter( e => {
+        console.log(e.dateOfExpiration);
+        console.log(now);
+        console.log('Passed check: ' + (e.dateOfExpiration >= now));
+        return e.dateOfExpiration >= now;
+      });
     });
 
     this.http.get('/curriculum/classes').subscribe( (res: {status: string, classes: Class[]}) => {
       this.classes = res.classes;
+      this.newsForm.get('class').setValue(this.classes[0].name);
     });
 
     this.isAdmin = this.auth.getUser().admin;
@@ -35,13 +51,6 @@ export class NewsComponent implements OnInit {
     this.adding = false;
     document.getElementById('addNews').addEventListener('click', () => {
       this.adding = !this.adding;
-    });
-
-    this.newsForm = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      text: new FormControl(null, Validators.required),
-      dateOfExpire: new FormControl(null, Validators.required),
-      class: new FormControl(null, Validators.required)
     });
   }
 
@@ -55,7 +64,7 @@ export class NewsComponent implements OnInit {
     };
     this.http.post('/news', {n: news}).subscribe( (res: {status: string, insertId: string}) => {
       console.log(res);
-      let attribute = 'id'; //to avoid warnings
+      let attribute = '_id'; //to avoid warnings
       news[attribute] = res.insertId;
       this.news.push(news);
     });
@@ -63,8 +72,9 @@ export class NewsComponent implements OnInit {
 
   deleteNews(i){
     const obj = this.news[i];
-    this.http.delete(`/news/${obj.id}`).subscribe( res => {
+    this.http.delete(`/news/${obj._id}`).subscribe( res => {
       console.log(res);
+      this.news.splice(i, 1);
     });
   }
 }
