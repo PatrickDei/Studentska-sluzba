@@ -226,10 +226,11 @@ class NewsComponent {
             this.news = res.news;
             let now = new Date();
             this.news = this.news.filter(e => {
-                console.log(e.dateOfExpiration);
+                let d = new Date(e.dateOfExpiration);
+                console.log(d);
                 console.log(now);
-                console.log('Passed check: ' + (e.dateOfExpiration >= now));
-                return e.dateOfExpiration >= now;
+                console.log('Passed check: ' + (d >= now));
+                return d >= now;
             });
         });
         this.http.get('/curriculum/classes').subscribe((res) => {

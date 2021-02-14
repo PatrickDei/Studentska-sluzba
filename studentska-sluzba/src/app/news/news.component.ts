@@ -32,13 +32,12 @@ export class NewsComponent implements OnInit {
     this.http.get('/news').subscribe((res: {status: string, news: News[]}) => {
       this.news = res.news;
 
-      let now = new Date();
-      this.news = this.news.filter( e => {
-        console.log(e.dateOfExpiration);
-        console.log(now);
-        console.log('Passed check: ' + (e.dateOfExpiration >= now));
-        return e.dateOfExpiration >= now;
-      });
+      const now = new Date();
+      if(this.auth.getUser().admin)
+        this.news = this.news.filter( e => {
+          const d = new Date(e.dateOfExpiration);
+          return d >= now;
+        });
     });
 
     this.http.get('/curriculum/classes').subscribe( (res: {status: string, classes: Class[]}) => {
