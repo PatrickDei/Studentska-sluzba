@@ -33,7 +33,7 @@ export class NewsComponent implements OnInit {
       this.news = res.news;
 
       const now = new Date();
-      if(this.auth.getUser().admin)
+      if(!this.auth.getUser().admin)
         this.news = this.news.filter( e => {
           const d = new Date(e.dateOfExpiration);
           return d >= now;

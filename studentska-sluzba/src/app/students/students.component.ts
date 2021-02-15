@@ -56,7 +56,6 @@ export class StudentsComponent implements OnInit {
   }
 
   addStudent(){
-    console.log(this.studentForm.get('dateOfBirth').value);
     let student = {
       name: this.studentForm.get('name').value,
       surname: this.studentForm.get('surname').value,
@@ -64,6 +63,7 @@ export class StudentsComponent implements OnInit {
       course: this.studentForm.get('course').value,
       dateOfEnrollment: new Date()
     };
+    
     this.http.post('api/students', {s: student}).subscribe( (res: {status: string, insertId: string}) => {
       console.log(res);
       let attribute = '_id'; //avoid waarnings

@@ -56,14 +56,6 @@ export class CurriculumChangeComponent implements OnInit {
     });
   }
 
-  editCourse(){
-
-  }
-
-  deleteCourse(){
-
-  }
-
   addingClass(){
     this.changingClasses = !this.changingClasses;
     this.changingCourses = false;
@@ -78,13 +70,5 @@ export class CurriculumChangeComponent implements OnInit {
       console.log(res);
       this.classes.push(cl);
     });
-  }
-
-  editClass(){
-
-  }
-
-  deleteClass(){
-
   }
 }

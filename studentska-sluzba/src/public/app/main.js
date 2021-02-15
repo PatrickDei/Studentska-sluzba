@@ -35,62 +35,84 @@ class RegisterComponent {
         this.http = http;
     }
     ngOnInit() {
+        this.nameWarning = document.getElementById('nameWarning');
+        this.passWarning = document.getElementById('passWarning');
+        this.confirmPassWarning = document.getElementById('confirmPassWarning');
+        this.emailWarning = document.getElementById('emailWarning');
+        this.usernameWarning = document.getElementById('usernameWarning');
         this.registerForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormGroup"]({
             name: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             password: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required),
             email: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].compose([_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].email, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required])),
             username: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].minLength(4)),
             confirmPass: new _angular_forms__WEBPACK_IMPORTED_MODULE_1__["FormControl"](null, _angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required)
-        });
+        }, { updateOn: 'blur' });
         this.isAdmin = document.getElementById('isAdmin');
+        this.registerForm.valueChanges.subscribe(value => {
+            (this.registerForm.get('name').valid) ? this.nameWarning.innerHTML = '' : this.nameWarning.innerHTML = 'Potrebno je ispuniti';
+            (this.registerForm.get('username').valid) ? this.usernameWarning.innerHTML = '' : this.usernameWarning.innerHTML = 'Potrebno je ispuniti sa barem 4 znaka';
+            (this.registerForm.get('email').valid) ? this.emailWarning.innerHTML = '' : this.emailWarning.innerHTML = 'Mora biti e-mail adresa';
+            (this.registerForm.get('password').valid) ? this.passWarning.innerHTML = '' : this.passWarning.innerHTML = 'Potrebno je ispuiti';
+            (this.registerForm.get('confirmPass').valid) ? this.confirmPassWarning.innerHTML = '' : this.confirmPassWarning.innerHTML = 'Potrebno je ispuniti';
+        });
     }
     addUser() {
         if (this.registerForm.get('password').value == this.registerForm.get('confirmPass').value) {
-            const newUser = {
-                username: this.registerForm.get('username').value,
-                password: this.registerForm.get('password').value,
-                email: this.registerForm.get('email').value,
-                name: this.registerForm.get('name').value,
-                admin: this.isAdmin.checked
-            };
-            this.http.post('/api/users', { u: newUser }).subscribe(res => {
-                console.log(res);
-            });
+            if (this.registerForm.valid) {
+                const newUser = {
+                    username: this.registerForm.get('username').value,
+                    password: this.registerForm.get('password').value,
+                    email: this.registerForm.get('email').value,
+                    name: this.registerForm.get('name').value,
+                    admin: this.isAdmin.checked
+                };
+                this.http.post('/api/users', { u: newUser }).subscribe(res => {
+                    console.log(res);
+                });
+            }
+        }
+        else {
+            this.confirmPassWarning.innerHTML = 'The 2 passwords should match';
         }
     }
 }
 RegisterComponent.ɵfac = function RegisterComponent_Factory(t) { return new (t || RegisterComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
-RegisterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RegisterComponent, selectors: [["app-register"]], decls: 22, vars: 1, consts: [["id", "registracija", 3, "formGroup"], [1, "form-group"], ["formControlName", "username", "placeholder", "Unesite korisni\u010Dko ime", 1, "form-control"], ["formControlName", "password", "placeholder", "Unesite lozinku", 1, "form-control"], ["formControlName", "confirmPass", "placeholder", "Ponovo unesite lozinku", 1, "form-control"], ["formControlName", "email", "placeholder", "Unesite e-mail", 1, "form-control"], ["formControlName", "name", "placeholder", "Unesite svoje ime", 1, "form-control"], [1, "form-check"], ["type", "checkbox", "id", "isAdmin", 1, "form-check-input"], [1, "form-check-label"], [1, "btn", "btn-primary", 3, "click"]], template: function RegisterComponent_Template(rf, ctx) { if (rf & 1) {
+RegisterComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: RegisterComponent, selectors: [["app-register"]], decls: 27, vars: 1, consts: [["id", "registracija", 3, "formGroup"], [1, "form-group"], ["formControlName", "username", "placeholder", "Unesite korisni\u010Dko ime", 1, "form-control"], ["id", "usernameWarning"], ["formControlName", "password", "placeholder", "Unesite lozinku", 1, "form-control"], ["id", "passWarning"], ["formControlName", "confirmPass", "placeholder", "Ponovo unesite lozinku", 1, "form-control"], ["id", "confirmPassWarning"], ["formControlName", "email", "placeholder", "Unesite e-mail", 1, "form-control"], ["id", "emailWarning"], ["formControlName", "name", "placeholder", "Unesite svoje ime", 1, "form-control"], ["id", "nameWarning"], [1, "form-check"], ["type", "checkbox", "id", "isAdmin", 1, "form-check-input"], [1, "form-check-label"], [1, "btn", "btn-primary", 3, "click"]], template: function RegisterComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Korisni\u010Dko ime ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Lozinka ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "input", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Lozinka ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " Ponovite lozinku ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "input", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, " E-mail ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "input", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, " Ponovite lozinku ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](11, "input", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](12, "div", 7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, " Ime ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "input", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, " E-mail ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](15, "input", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](16, "div", 9);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "div", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](17, "input", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "label", 9);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](19, "Add as admin");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18, " Ime ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](19, "input", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](20, "div", 11);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "div", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](22, "input", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "label", 14);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Add as admin");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](20, "button", 10);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function RegisterComponent_Template_button_click_20_listener() { return ctx.addUser(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](21, "Registriraj");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "button", 15);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function RegisterComponent_Template_button_click_25_listener() { return ctx.addUser(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26, "Registriraj");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -202,7 +224,7 @@ function NewsComponent_div_3_Template(rf, ctx) { if (rf & 1) {
     const n_r6 = ctx.$implicit;
     const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", n_r6.title, " - ", n_r6.name, "");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", n_r6.title, " - ", n_r6.class, "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate2"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](6, 6, n_r6.datePublished, "short"), " - ", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind2"](7, 9, n_r6.dateOfExpiration, "short"), "");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
@@ -225,7 +247,7 @@ class NewsComponent {
         this.http.get('/news').subscribe((res) => {
             this.news = res.news;
             const now = new Date();
-            if (this.auth.getUser().admin)
+            if (!this.auth.getUser().admin)
                 this.news = this.news.filter(e => {
                     const d = new Date(e.dateOfExpiration);
                     return d >= now;
@@ -328,6 +350,9 @@ class DetailsComponent {
         this.http.get(`/api/students/${this.objectID}`).subscribe((res) => {
             this.student = res.student[0];
             console.log(this.student);
+            const curYear = new Date();
+            const enrolledYear = new Date(this.student.dateOfEnrollment);
+            this.student.yearsEnrolled = curYear.getFullYear() - enrolledYear.getFullYear() + 1;
             this.editForm.get('name').setValue(this.student.name);
             this.editForm.get('surname').setValue(this.student.surname);
             this.editForm.get('dateOfBirth').setValue(this.toFormDate(new Date(this.student.dateOfBirth)));
@@ -350,12 +375,13 @@ class DetailsComponent {
         let formattedDateTime = '';
         const month = dateTime.getMonth() + 1;
         const day = dateTime.getDate();
-        console.log('month: ' + month);
+        const hours = dateTime.getHours();
+        const minutes = dateTime.getMinutes();
         formattedDateTime += dateTime.getFullYear() + '-';
         formattedDateTime += ((month < 10) ? '0' : '') + month + '-';
         formattedDateTime += ((day < 10) ? '0' : '') + day + 'T';
-        formattedDateTime += dateTime.getHours() + ':';
-        formattedDateTime += dateTime.getMinutes();
+        formattedDateTime += ((hours < 10) ? '0' : '') + hours + ':';
+        formattedDateTime += ((minutes < 10) ? '0' : '') + minutes;
         return formattedDateTime;
     }
 }
@@ -595,15 +621,21 @@ function StudentsComponent_form_2_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx_r0.courses);
 } }
-function StudentsComponent_tr_20_button_12_Template(rf, ctx) { if (rf & 1) {
-    const _r11 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+function StudentsComponent_tr_20_button_10_Template(rf, ctx) { if (rf & 1) {
+    const _r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 15);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function StudentsComponent_tr_20_button_12_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r11); const i_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index; const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r9.deleteStudent(i_r7); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function StudentsComponent_tr_20_button_10_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r12); const i_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index; const ctx_r10 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r10.editStudent(i_r7); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Uredi");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} }
+function StudentsComponent_tr_20_button_11_Template(rf, ctx) { if (rf & 1) {
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function StudentsComponent_tr_20_button_11_Template_button_click_0_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r15); const i_r7 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]().index; const ctx_r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r13.deleteStudent(i_r7); });
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Obri\u0161i");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } }
 function StudentsComponent_tr_20_Template(rf, ctx) { if (rf & 1) {
-    const _r13 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "tr");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "td");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
@@ -618,11 +650,8 @@ function StudentsComponent_tr_20_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "td");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "button", 13);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function StudentsComponent_tr_20_Template_button_click_10_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r13); const i_r7 = ctx.index; const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"](); return ctx_r12.editStudent(i_r7); });
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Uredi");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](12, StudentsComponent_tr_20_button_12_Template, 2, 0, "button", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](10, StudentsComponent_tr_20_button_10_Template, 2, 0, "button", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](11, StudentsComponent_tr_20_button_11_Template, 2, 0, "button", 14);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 } if (rf & 2) {
@@ -636,7 +665,9 @@ function StudentsComponent_tr_20_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](s_r6.course);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](s_r6.yearsEnrolled);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.auth.isAuthenticated());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx_r1.isAdmin);
 } }
 class StudentsComponent {
@@ -672,7 +703,6 @@ class StudentsComponent {
         this.isAdmin = this.auth.getUser().admin;
     }
     addStudent() {
-        console.log(this.studentForm.get('dateOfBirth').value);
         let student = {
             name: this.studentForm.get('name').value,
             surname: this.studentForm.get('surname').value,
@@ -708,7 +738,7 @@ class StudentsComponent {
     }
 }
 StudentsComponent.ɵfac = function StudentsComponent_Factory(t) { return new (t || StudentsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"])); };
-StudentsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: StudentsComponent, selectors: [["app-students"]], decls: 21, vars: 2, consts: [["id", "addStudent", 1, "btn", "btn-primary"], [3, "formGroup", 4, "ngIf"], ["placeholder", "Unesite ime studenta", "id", "param", 3, "input"], [1, "table"], ["scope", "col"], [4, "ngFor", "ngForOf"], [3, "formGroup"], [1, "form-group"], ["formControlName", "name", "placeholder", "Ime studenta", 1, "form-control"], ["formControlName", "surname", "placeholder", "Prezime studenta", 1, "form-control"], ["type", "date", "formControlName", "dateOfBirth", 1, "form-control"], ["formControlName", "course", 1, "form-control"], [1, "btn", "btn-primary", 3, "click"], [1, "btn", "btn-warning", "float-left", 3, "click"], ["type", "button", "class", "btn btn-danger float-right", 3, "click", 4, "ngIf"], ["type", "button", 1, "btn", "btn-danger", "float-right", 3, "click"]], template: function StudentsComponent_Template(rf, ctx) { if (rf & 1) {
+StudentsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: StudentsComponent, selectors: [["app-students"]], decls: 21, vars: 2, consts: [["id", "addStudent", 1, "btn", "btn-primary"], [3, "formGroup", 4, "ngIf"], ["placeholder", "Unesite ime studenta", "id", "param", 3, "input"], [1, "table"], ["scope", "col"], [4, "ngFor", "ngForOf"], [3, "formGroup"], [1, "form-group"], ["formControlName", "name", "placeholder", "Ime studenta", 1, "form-control"], ["formControlName", "surname", "placeholder", "Prezime studenta", 1, "form-control"], ["type", "date", "formControlName", "dateOfBirth", 1, "form-control"], ["formControlName", "course", 1, "form-control"], [1, "btn", "btn-primary", 3, "click"], ["class", "btn btn-warning float-left", 3, "click", 4, "ngIf"], ["type", "button", "class", "btn btn-danger float-right", 3, "click", 4, "ngIf"], [1, "btn", "btn-warning", "float-left", 3, "click"], ["type", "button", 1, "btn", "btn-danger", "float-right", 3, "click"]], template: function StudentsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "button", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Dodaj studenta");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -738,7 +768,7 @@ StudentsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "tbody");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, StudentsComponent_tr_20_Template, 13, 5, "tr", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](20, StudentsComponent_tr_20_Template, 12, 6, "tr", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
@@ -891,10 +921,6 @@ class CurriculumChangeComponent {
             this.courses.push(course);
         });
     }
-    editCourse() {
-    }
-    deleteCourse() {
-    }
     addingClass() {
         this.changingClasses = !this.changingClasses;
         this.changingCourses = false;
@@ -908,10 +934,6 @@ class CurriculumChangeComponent {
             console.log(res);
             this.classes.push(cl);
         });
-    }
-    editClass() {
-    }
-    deleteClass() {
     }
 }
 CurriculumChangeComponent.ɵfac = function CurriculumChangeComponent_Factory(t) { return new (t || CurriculumChangeComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };
@@ -1234,24 +1256,26 @@ class LoginComponent {
         });
     }
     logMeIn() {
-        if (this.loginForm.value != undefined)
+        if (this.loginForm.valid)
             this.auth.login(this.loginForm.value);
     }
 }
 LoginComponent.ɵfac = function LoginComponent_Factory(t) { return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"])); };
-LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 9, vars: 1, consts: [[3, "formGroup"], [1, "form-group"], ["formControlName", "username", "placeholder", "Unesite korisni\u010Dko ime", 1, "form-control"], ["formControlName", "password", "placeholder", "Unesite lozinku", 1, "form-control"], [1, "btn", "btn-primary", 3, "click"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
+LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 11, vars: 1, consts: [[3, "formGroup"], [1, "form-group"], ["formControlName", "username", "placeholder", "Unesite korisni\u010Dko ime", 1, "form-control"], ["id", "username"], ["formControlName", "password", "placeholder", "Unesite lozinku", 1, "form-control"], ["id", "password"], [1, "btn", "btn-primary", 3, "click"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "form", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, " Korisni\u010Dko ime ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](3, "input", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](4, "div", 3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5, " Lozinka ");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "input", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, " Lozinka ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](7, "input", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](8, "div", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function LoginComponent_Template_button_click_7_listener() { return ctx.logMeIn(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Prijava");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function LoginComponent_Template_button_click_9_listener() { return ctx.logMeIn(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Prijava");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {

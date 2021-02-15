@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   logMeIn(){
-    if (this.loginForm.value != undefined)
+    if (this.loginForm.valid)
       this.auth.login(this.loginForm.value);
   }
 }

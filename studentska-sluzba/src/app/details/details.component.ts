@@ -34,6 +34,10 @@ export class DetailsComponent implements OnInit {
       this.student = res.student[0];
       console.log(this.student);
 
+      const curYear = new Date();
+      const enrolledYear = new Date(this.student.dateOfEnrollment);
+      this.student.yearsEnrolled = curYear.getFullYear() - enrolledYear.getFullYear() + 1;
+
       this.editForm.get('name').setValue(this.student.name);
       this.editForm.get('surname').setValue(this.student.surname);
       this.editForm.get('dateOfBirth').setValue(this.toFormDate(new Date(this.student.dateOfBirth)));
@@ -66,7 +70,7 @@ export class DetailsComponent implements OnInit {
     formattedDateTime += ((month < 10) ? '0' : '') + month + '-';
     formattedDateTime += ((day < 10) ? '0' : '') +  day + 'T';
     formattedDateTime += ((hours < 10) ? '0' : '') + hours + ':';
-    formattedDateTime += ((minuts < 10) ? '0' : '') + minutes;
+    formattedDateTime += ((minutes < 10) ? '0' : '') + minutes;
 
     return formattedDateTime;
   }

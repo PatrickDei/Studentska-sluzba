@@ -43,7 +43,7 @@ Pretraga
       <td>{{s.course}}</td>
       <td>{{s.yearsEnrolled}}</td>
       <td>
-        <button (click)="editStudent(i)" class="btn btn-warning float-left">Uredi</button>
+        <button *ngIf="auth.isAuthenticated()" (click)="editStudent(i)" class="btn btn-warning float-left">Uredi</button>
         <button *ngIf="isAdmin" type="button" class="btn btn-danger float-right" (click)="deleteStudent(i)">Obriši</button>
       </td>
     </tr>
