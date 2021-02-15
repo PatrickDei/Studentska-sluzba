@@ -21,8 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="73ae191d-7f1a-4f35-acae-691b9973da15" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/news/news.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/public/app/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/public/app/main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +79,7 @@
       <workItem from="1612976851922" duration="28000" />
       <workItem from="1613052645567" duration="706000" />
       <workItem from="1613118553909" duration="29664000" />
-      <workItem from="1613329167488" duration="10077000" />
+      <workItem from="1613329167488" duration="13159000" />
     </task>
     <servers />
   </component>

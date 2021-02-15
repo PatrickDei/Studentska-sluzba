@@ -21,6 +21,11 @@
   <button (click)="addStudent()" class="btn btn-primary">Upiši</button>
 </form>
 
+<br>
+Pretraga
+<input placeholder="Unesite ime studenta" (input)="search()" id="param">
+<br>
+
 <table class="table">
   <thead>
   <tr>
@@ -32,7 +37,7 @@
   </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let s of students; let i = index">
+    <tr *ngFor="let s of shownStudents; let i = index">
       <td><a [routerLink]="">{{s.name}}</a></td>
       <td>{{s.surname}}</td>
       <td>{{s.course}}</td>

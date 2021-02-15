@@ -19,6 +19,7 @@ export class StudentsComponent implements OnInit {
   studentForm: FormGroup;
   isAdmin: boolean;
   courses: Course[];
+  shownStudents: Student[];
 
   ngOnInit(): void {
     this.studentForm = new FormGroup({
@@ -30,6 +31,7 @@ export class StudentsComponent implements OnInit {
 
     this.http.get('api/students').subscribe((res: {status: string, students: Student[]}) => {
       this.students = res.students;
+      this.shownStudents = this.students;
 
       this.students.forEach((s) => {
         const curYear = new Date();
@@ -68,6 +70,7 @@ export class StudentsComponent implements OnInit {
       attribute = 'yearsEnrolled';
       student[attribute] = 1;
       this.students.push(student);
+      this.shownStudents = this.students;
     });
   }
 
@@ -77,6 +80,12 @@ export class StudentsComponent implements OnInit {
     this.http.delete(`/api/students/${obj._id}`).subscribe( res => {
       console.log(res);
       this.students.splice(i, 1);
+      this.shownStudents = this.students;
     });
+  }
+
+  search(){
+    this.shownStudents = this.students.filter( e => e.name.toLowerCase().includes((document.getElementById('param') as HTMLInputElement).value.toLowerCase())
+      || e.surname.toLowerCase().includes((document.getElementById('param') as HTMLInputElement).value.toLowerCase()));
   }
 }
