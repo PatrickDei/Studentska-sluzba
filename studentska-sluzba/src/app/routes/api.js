@@ -8,6 +8,20 @@ module.exports = function (express, pool, db) {
     console.log('Welcome to the api!');
   });
 
+// ruta za jednog studenta
+  router.route('/students/:id').get(async function (req, res) {
+    try{
+      let row = await db.collection('students').find({
+        _id: ObjectId(req.params.id)
+      }).toArray();
+      console.log(row);
+      res.json({status: 'OK', student: row});
+    }catch(e) {
+      console.log(e);
+      return res.json({code: 100, status: 'Error with query'});
+    }
+  });
+
   // /api/students ruta
   router.route('/students').get(async function (req, res) {
     try{
@@ -27,6 +41,7 @@ module.exports = function (express, pool, db) {
     }
   }).put(async function (req, res) {
     try{
+      console.log(req.body.s);
       let data = await db.collection('students').updateOne({
         _id: ObjectId(req.body.s.id)
       }, {

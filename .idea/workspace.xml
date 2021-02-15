@@ -20,7 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="73ae191d-7f1a-4f35-acae-691b9973da15" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Studentska sluzba.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Studentska sluzba.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/app-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/main-menu/main-menu.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/main-menu/main-menu.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/routes/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/routes/api.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/app/students/students.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentska-sluzba/src/public/app/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/studentska-sluzba/src/public/app/main.js" afterDir="false" />
@@ -79,7 +85,7 @@
       <workItem from="1612976851922" duration="28000" />
       <workItem from="1613052645567" duration="706000" />
       <workItem from="1613118553909" duration="29664000" />
-      <workItem from="1613329167488" duration="13159000" />
+      <workItem from="1613329167488" duration="25599000" />
     </task>
     <servers />
   </component>
@@ -107,10 +113,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1613240143034" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1613213719317">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1613389456678">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613213719317" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1613389456678" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1613251677885">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

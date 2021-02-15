@@ -38,12 +38,13 @@ Pretraga
   </thead>
   <tbody>
     <tr *ngFor="let s of shownStudents; let i = index">
-      <td><a [routerLink]="">{{s.name}}</a></td>
+      <td>{{s.name}}</td>
       <td>{{s.surname}}</td>
       <td>{{s.course}}</td>
       <td>{{s.yearsEnrolled}}</td>
       <td>
-        <button *ngIf="isAdmin" type="button" class="btn btn-danger" (click)="deleteStudent(i)">Obriši</button>
+        <button (click)="editStudent(i)" class="btn btn-warning float-left">Uredi</button>
+        <button *ngIf="isAdmin" type="button" class="btn btn-danger float-right" (click)="deleteStudent(i)">Obriši</button>
       </td>
     </tr>
   </tbody>

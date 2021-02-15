@@ -8,11 +8,12 @@ import { StudentsComponent } from './students/students.component';
 import { NewsComponent } from './news/news.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {AuthService} from './auth.service';
 import { CurriculumChangeComponent } from './curriculum-change/curriculum-change.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -22,16 +23,18 @@ import { CurriculumChangeComponent } from './curriculum-change/curriculum-change
     NewsComponent,
     LoginComponent,
     RegisterComponent,
-    CurriculumChangeComponent
+    CurriculumChangeComponent,
+    DetailsComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule,
-    AuthService
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule,
+        AuthService,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

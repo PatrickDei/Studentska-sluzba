@@ -1,0 +1,24 @@
+<form [formGroup]="editForm" id="registracija">
+  <div class="form-group">
+    Ime studenta:
+    <input formControlName="name" class="form-control">
+  </div>
+  <div class="form-group">
+    Prezime studenta:
+    <input formControlName="surname" class="form-control">
+  </div>
+  <div class="form-group">
+    Datum rođenja:
+    <input type="datetime-local" formControlName="dateOfBirth" class="form-control">
+  </div>
+  <div class="form-group">
+    Smjer:
+    <input formControlName="course" class="form-control">
+  </div>
+  <div class="form-group">
+    Datum upisa: (godina studija: {{student.yearsEnrolled}})
+    <input type="datetime-local" formControlName="dateOfEnrollment" class="form-control">
+  </div>
+
+  <button (click)="saveChanges()" class="btn btn-primary">Spremi promjene</button>
+</form>

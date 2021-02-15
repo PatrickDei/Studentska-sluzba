@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../auth.service';
 import {Course} from './course.model';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-students',
@@ -12,7 +13,7 @@ import {Course} from './course.model';
 })
 export class StudentsComponent implements OnInit {
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService, private router: Router) { }
 
   students: Student[];
   adding: boolean;
@@ -72,6 +73,10 @@ export class StudentsComponent implements OnInit {
       this.students.push(student);
       this.shownStudents = this.students;
     });
+  }
+
+  editStudent(i){
+    this.router.navigate([`${this.students[i]._id}`]);
   }
 
   deleteStudent(i){
